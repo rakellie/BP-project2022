@@ -2,17 +2,130 @@
 <html>
   <head>
   <title>Grade Calculator</title>
-  <link rel = 'stylesheet' type = 'text/css' href = "index.css"/>
+  <link rel = 'stylesheet' type = 'text/css' href = "style.css"/>
   </head>
   <body>
-    <div class="body-content">
-      <p1>Grade Calculator</p1>
-        <label for="weighted"> "Are your grades weighted? </label>
-        <select name="weighted" id="weighted">
-            <option value="yes">yes</option>
-            <option value="no">no </option>
+    <div class="body-content" style = "background-color: #D6CCC2">
+      <p1 id="title">Grade Calculator</p1> 
+    <img height = 150 width = 150 src = https://cdn.discordapp.com/attachments/944737990968770601/944984841353580604/Grade_Calculator.jpg></div>
+    <div class = "body-content" style="background-color: #D6CCC2;">
+      <p2 id="instructions"> Make sure to input integer values!</p2> </div>
+      <!--<div class="weighted">
+        <label for="weighted"> Are your grades weighted? </label>
+        <select name="weighted" id="weighted" style="width: 75px">
+            <option value="no" class="dropdown"> no </option>
+            <option value="yes" class="dropdown"> yes </option>
         </select>
-        <button> </button>
+        </div> -->
+    <div style = "background-color:#F5EBE0"><table class = "table" id = "unweightedTable">    
+        <tr>    
+          <th> Earned </th>    
+          <th> Total </th>    
+        </tr>    
+        <tr>    
+          <td><input type="text" name="currentEarnedUnweighted" class="input" id = "earnedUnweighted" /> </td>    
+          <td><input type="text" name="currentTotalUnweighted" class="input" id = "totalUnweighted"/> </td>    
+        </tr>    
+    </table> </div> <br> <br>
+    <div style = "background-color:#F5EBE0"> <table  class = "table" id = "weightedTable">
+        <tr>
+            <th>Category Name</th>
+            <th>Weight</th>
+            <th>Current Earned</th>
+            <th>Current Total</th>
+        </tr>
+        <tr>
+            <td><input type="text" name="category1" id = "category1" class="input"/> </td>    
+            <td><input type="text" name="weight1" class="input"/> </td>
+            <td><input type="text" name="currentEarnedWeighted" class="input"/> </td>    
+            <td><input type="text" name="currentTotalWeighted" class="input"/> </td> 
+        </tr>
+        <tr>
+            <td><input type="text" name="category2" id = "category2" class="input"/> </td>    
+            <td><input type="text" name="weight2" class="input"/> </td>
+            <td><input type="text" name="currentEarned2" class="input"/> </td>    
+            <td><input type="text" name="currentTotal2" class="input"/> </td>  
+        </tr>
+        <tr>
+            <td><input type="text" name="category3" class="input"/> </td>    
+            <td><input type="text" name="weight3" class="input"/> </td>
+            <td><input type="text" name="currentEarned3" class="input"/> </td>    
+            <td><input type="text" name="currentTotal3" class="input"/> </td>  
+        </tr>
+    </table></div> <br> <br>
+    <div class = "btn-container">
+        <button onClick="enterCategories()" class = "weighted-btn" id = "weighted-btn">Enter your weighted categories!</button>
     </div>
+    <div style = "background-color:#EDEDE9"> <table class = "table" id = "unweightedAssignments">
+        <tr>
+            <th>Assigment name</th>
+            <th>Total Points</th>
+        </tr>
+        <tr>
+            <td><input type="text" name="assignment1Name" class="input" id ="assingment1Name"/> </td>  
+            <td><input type="text" name="possiblePoints1" class="input" id = "unweightedPossiblePoints1"/> </td>    
+        </tr>
+        <tr>
+            <td><input type="text" name="assignment2Name" class="input" id ="assingment2Name"/> </td>    
+            <td><input type="text" name="possiblePoints2" class="input" id = "unweightedPossiblePoints2"/> </td>    
+        </tr>
+        <tr>
+            <td><input type="text" name="assignment3Name" class="input" id ="assingment3Name"/> </td>    
+            <td><input type="text" name="possiblePoints3" class="input" id = "unweightedPossiblePoints3"/> </td>    
+        </tr>
+    </table></div> <br><br>
+
+    <div id="textElementID"> </div>
+    <div style = "background-color:#EDEDE9"><table class = "table" id = "weightedAssignments">
+        <tr>
+            <th>Assigment name</th>
+            <th>Category</th>
+            <th>Possible Points</th>
+        </tr>
+        <tr>
+            <td><input type="text" name="assignment1Name" class="input"/> </td>    
+            <td><select name="assignment1Category" style="width: 75px">
+                <option value="category1" class="dropdown">  </option>
+                <option value="category2" class="dropdown">  </option>
+            </select>
+        </td>
+            <td><input type="text" name="possiblePoints1" class="input"/> </td>    
+        </tr>
+        <tr>
+            <td><input type="text" name="assignment2Name" class="input"/> </td>    
+            <td><select name="assignment2Category" style="width: 75px">
+                <option value="category1" class="dropdown" id="category1">  </option>
+                <option value="category2" class="dropdown">  </option>
+            </select>
+        </td>
+            <td><input type="text" name="possiblePoints2" class="input"/> </td>    
+        </tr>
+        <tr>
+            <td><input type="text" name="assignment3Name" class="input"/> </td>    
+            <td><select name="assignment3Category" style="width: 75px">
+                <option value="category1" class="dropdown" id = "category1Dropdown"> </option>
+                <option value="category2" class="dropdown"> </option>
+            </select>
+        </td>
+            <td><input type="text" name="possiblePoints3" class="input"/> </td>    
+        </tr>    
+    </table></div>
+    <div class = "grade-goal" id="grade-goal">
+        <label for="goal"> What is your baseline grade? (e.g. 89.5% for an A) </label>
+        <input type="text" name="baselineGrade" class="input" id = "baselineInput"/>
+    </div>
+    <!--<div>
+        <label for="numAssignments"> How many assignments are you calculating for? (maximum of 3)</label>
+        <input type="text" name="numAssignments" class="input" id = "numAssignmentsInput"/>
+    </div> -->
+    <div class = "btn-container2">
+        <button onclick="getCombinations()">Calculate Needed Points</button>
+        <!--<button onclick="getCombinations2()" id="getCombinations2">Calculate Needed Points</button>
+        <button onclick="getCombinations3()" id="getCombinations3">Calculated Needed Points</button> -->
+    </div>
+    <div class = "results">
+        <h2 id = "result1">Whatever</h2>
+    </div>   
   </body>
 </html>
+<script src = "index.js"></script>
